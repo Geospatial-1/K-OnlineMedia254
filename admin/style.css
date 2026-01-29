@@ -1,0 +1,64 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+  margin: 0;
+}
+
+header {
+  padding: 1rem;
+  background: #020617;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  background: #020617;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+button {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  background: #2563eb;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button.danger {
+  background: #dc2626;
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+select {
+  width: 100%;
+  padding: 0.4rem;
+}
+
+#status.offline {
+  color: red;
+}
+
+#status.live {
+  color: #22c55e;
+}
