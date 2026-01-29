@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Broadcast Admin Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <h1>Live Broadcast Control</h1>
+  <span id="status" class="offline">OFFLINE</span>
+</header>
+
+<section class="panel">
+
+  <div class="card">
+    <h2>Stream Control</h2>
+
+    <label>
+      Mixing Mode
+      <select id="mixMode">
+        <option value="browser">Browser Mixer</option>
+        <option value="ffmpeg">FFmpeg Mixer</option>
+      </select>
+    </label>
+
+    <button id="startStream">Start Live</button>
+    <button id="stopStream" class="danger">Stop Live</button>
+  </div>
+
+  <div class="card">
+    <h2>Recording Control</h2>
+    <button id="publishRecording">Publish Recording</button>
+    <button id="holdRecording">Hold for Review</button>
+  </div>
+
+  <div class="card">
+    <h2>Listener Requests</h2>
+    <ul id="requestList"></ul>
+  </div>
+
+  <div class="card">
+    <h2>Rented Room Requests</h2>
+    <ul id="roomRequests"></ul>
+  </div>
+
+  <div class="card">
+    <h2>Branding & Ads</h2>
+    <button id="injectAd">Inject Audio Ad</button>
+    <button id="toggleWatermark">Toggle Watermark</button>
+  </div>
+
+</section>
+
+<script src="admin.js"></script>
+</body>
+</html>
