@@ -61,6 +61,38 @@
   </section>
 
 </div>
+  <script>
+fetch('assets/data.json')
+  .then(res => res.json())
+  .then(data => {
+    const live = data.live;
+
+    document.getElementById('topic').innerText = live.topic;
+    document.getElementById('guest').innerText = live.guest;
+    document.getElementById('date').innerText = live.date;
+
+    if (live.isLive) {
+      document.getElementById('player').innerHTML =
+        `<iframe width="100%" height="315" src="${live.youtubeEmbed}" allowfullscreen></iframe>`;
+    } else {
+      document.getElementById('player').innerHTML =
+        `<p>🔕 Not live now. Please check schedule.</p>`;
+    }
+
+    const table = document.getElementById('episodes');
+    data.episodes.forEach(ep => {
+      table.innerHTML += `
+        <tr>
+          <td><img src="${ep.image}" width="60"></td>
+          <td>${ep.topic}</td>
+          <td>${ep.summary}</td>
+          <td>${ep.duration}</td>
+          <td>${ep.premium ? 'Premium' : `<a href="${ep.link}">Free</a>`}</td>
+        </tr>`;
+    });
+  });
+</script>
+
 
 <footer>
   <small>Great stories/topics you want to hear · NewsOnline254</small>
