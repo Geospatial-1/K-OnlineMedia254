@@ -1,77 +1,20 @@
-const statusEl = document.getElementById("status");
-const requestList = document.getElementById("requestList");
-const roomRequests = document.getElementById("roomRequests");
+function update() {
+  const data = {
+    live: {
+      isLive: document.getElementById('live').value === 'true',
+      topic: document.getElementById('topic').value,
+      guest: document.getElementById('guest').value,
+      date: document.getElementById('date').value,
+      youtubeEmbed: document.getElementById('yt').value
+    }
+  };
 
-let isLive = false;
-let watermarkEnabled = true;
-
-// ---- STREAM CONTROL ----
-document.getElementById("startStream").onclick = async () => {
-  await apiCall("/stream/start", {
-    mode: document.getElementById("mixMode").value
+  const blob = new Blob([JSON.stringify(data, null, 2)], {
+    type: "application/json"
   });
-  setLive(true);
-};
 
-document.getElementById("stopStream").onclick = async () => {
-  await apiCall("/stream/stop");
-  setLive(false);
-};
-
-function setLive(state) {
-  isLive = state;
-  statusEl.textContent = state ? "LIVE" : "OFFLINE";
-  statusEl.className = state ? "live" : "offline";
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'data.json';
+  a.click();
 }
-
-// ---- RECORDING ----
-document.getElementById("publishRecording").onclick = () =>
-  apiCall("/recording/publish");
-
-document.getElementById("holdRecording").onclick = () =>
-  apiCall("/recording/hold");
-
-// ---- LISTENER REQUESTS (SIMULATED) ----
-function renderRequest(user) {
-  const li = document.createElement("li");
-  li.innerHTML = `
-    ${user}
-    <button onclick="approve('${user}')">Approve</button>
-    <button onclick="reject('${user}')">Reject</button>
-  `;
-  requestList.appendChild(li);
-}
-
-window.approve = user => apiCall("/listener/approve", { user });
-window.reject = user => apiCall("/listener/reject", { user });
-
-// ---- RENTED ROOMS ----
-function renderRoom(room) {
-  const li = document.createElement("li");
-  li.innerHTML = `
-    ${room}
-    <button onclick="greenLight('${room}')">Green Light</button>
-  `;
-  roomRequests.appendChild(li);
-}
-
-window.greenLight = room => apiCall("/room/approve", { room });
-
-// ---- BRANDING ----
-document.getElementById("injectAd").onclick = () =>
-  apiCall("/ads/inject");
-
-document.getElementById("toggleWatermark").onclick = async () => {
-  watermarkEnabled = !watermarkEnabled;
-  await apiCall("/watermark/toggle", { enabled: watermarkEnabled });
-};
-
-// ---- MOCK API CALL ----
-async function apiCall(endpoint, data = {}) {
-  console.log("API:", endpoint, data);
-  return new Promise(res => setTimeout(res, 400));
-}
-
-// ---- DEMO DATA ----
-renderRequest("listener_001");
-renderRoom("room_kenya_podcast");
