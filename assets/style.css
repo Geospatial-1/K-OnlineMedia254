@@ -1,0 +1,119 @@
+:root {
+  --red: #dc2626;
+  --dark: #0f172a;
+  --light: #ffffff;
+  --gray: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    system-ui, sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: var(--light);
+  border-bottom: 1px solid var(--gray);
+  padding: 1rem;
+  z-index: 100;
+}
+
+header strong {
+  color: var(--red);
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+.hero {
+  background: linear-gradient(
+      rgba(15, 23, 42, 0.7),
+      rgba(15, 23, 42, 0.7)
+    ),
+    url("hero.jpg") center/cover no-repeat;
+  color: white;
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: var(--red);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.section {
+  margin-top: 3rem;
+}
+
+.section h2 {
+  margin-bottom: 1rem;
+  color: var(--red);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid var(--gray);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+}
+
+.carousel img {
+  height: 140px;
+  border-radius: 12px;
+}
+
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+}
+
+footer small {
+  opacity: 0.7;
+}
+
+.floating-live {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 200;
+}
