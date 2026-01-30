@@ -1,0 +1,21 @@
+{
+  "live": {
+    "isLive": true,
+    "youtubeEmbed": "https://www.youtube.com/embed/YOUR_LIVE_ID",
+    "topic": "Youth & Digital Economy",
+    "guest": "Jane Doe",
+    "date": "Friday, 7:00 PM (EAT)"
+  },
+  "episodes": [
+    {
+      "id": 1,
+      "guest": "John Mwangi",
+      "topic": "Land & Youth",
+      "summary": "Challenges young people face in land ownership",
+      "duration": "45 min",
+      "image": "assets/guests/guest1.jpg",
+      "link": "#",
+      "premium": false
+    }
+  ]
+}
